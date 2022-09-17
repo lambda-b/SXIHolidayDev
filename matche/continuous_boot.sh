@@ -1,2 +1,2 @@
-nohup ./gradlew build -t --daemon &
+nohup ./gradlew build -t &
 ./gradlew bootRun
