@@ -9,7 +9,7 @@ public class SampleController {
  
     @RequestMapping("hello")
     private String hello() {
-        return "SpringBoot!";
+        return "Hello, Spring boot";
     }
 
 }

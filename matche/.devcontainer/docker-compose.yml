@@ -1,0 +1,10 @@
+version: '3.6'
+services:
+  matche:
+    image: openjdk:11
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ..:/mache:cached
+    working_dir: /mache
