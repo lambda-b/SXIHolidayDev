@@ -1,0 +1,43 @@
+// =========================================
+// padding
+// =========================================
+.p {
+	// direction
+	$directions: (
+		t: (top, ),
+		b: (bottom, ),
+		l: (left, ),
+		r: (right, ),
+		x: (left, right),
+		y: (top, bottom),
+	);
+
+	@each $tblr, $direction in $directions {
+		&#{$tblr} {
+			&-auto {
+				@each $val in $direction {
+					padding-#{$val}: auto !important;
+				}
+			}
+		
+
+			&-0 {
+				@each $val in $direction {
+					padding-#{$val}: 0 !important;
+				}
+			}
+
+			&-x {
+				@for $itr from $start-value through $end-value {
+					$pd: 8 * $itr;
+
+					&-#{$itr} {
+						@each $val in $direction {
+							padding-#{$val}: #{$pd}px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

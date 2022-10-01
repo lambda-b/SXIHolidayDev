@@ -1,0 +1,18 @@
+// =========================================
+// width
+// =========================================
+@for $denom from 2 through 8 {
+  @for $numer from 1 through $denom - 1 {
+    .wd-#{$numer}-#{$denom} {
+      width: calc((100% * #{$numer}) / #{$denom}) !important;
+    }
+  }
+}
+
+.wd-auto {
+  width: auto !important;
+}
+
+.wd-full {
+  width: 100% !important;
+}

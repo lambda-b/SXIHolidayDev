@@ -1,0 +1,34 @@
+// =========================================
+// border
+// =========================================
+.bd {
+  @each $color-name, $color in $colors {
+    &-#{$color-name} {
+      border: 1px, solid, $color;
+    }
+
+    $directions: (top, bottom, left, right, all);
+
+    @each $direction in $directions {
+      @if ($direction == all) {
+        &-#{$color-name} {
+          border: 1px solid $color;
+          @for $itr from $start-value through $end-value {
+            &-#{$itr} {
+              border: #{$itr}px solid $color;
+            }
+          }
+        }
+      } @else {
+        &-#{$direction}-#{$color-name} {
+          border-#{$direction}: 1px solid $color;
+          @for $itr from $start-value through $end-value {
+            &-#{$itr} {
+              border-#{$direction}: #{$itr}px solid $color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// =========================================
+// variables
+// =========================================
+
+// loop
+$start-value: 1;
+$end-value: 8;
+
+// color
+$turquoise: hsl(171, 100%, 41%);
+$cyan: hsl(207, 61%, 53%);
+$green: hsl(153, 53%, 53%);
+$red: hsl(348, 100%, 61%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey-light: hsl(0, 0%, 71%);
+$white-ter: hsl(0, 0%, 96%);
+$grey-darker: hsl(0, 0%, 21%);
+
+$colors: (
+  turquoise: $turquoise,
+  cyan: $cyan,
+  green: $green,
+  red: $red,
+  grey-dark: $grey-dark,
+  grey-light: $grey-light,
+  white-ter: $white-ter,
+  grey-darker: $grey-darker
+);
