@@ -11,10 +11,8 @@ const styles = {
     justify-content: space-around;
   `),
   menuButton: css`
-    cursor: pointer;
     height: 12rem;
     width: 12rem;
-    background-color: hsl(0, 0%, 100%);
     border: 1px solid black;
     border-radius: 5px;
     &:focus {
