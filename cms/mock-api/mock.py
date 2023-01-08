@@ -1,6 +1,5 @@
 # 開発する上で、jsonを返してくれるサーバーを提供
 # URLに応じて、jsonファイルの中身を返却する
-import http.server
 import socketserver
 
 PORT = 8000

@@ -1,1 +1,11 @@
-{}
+{
+    "pageInfo": {},
+    "components": [
+        {
+            "componentId": "SampleComponent",
+            "property": {
+                "message": "Hello, CMS?"
+            }
+        }
+    ]
+}
