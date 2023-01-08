@@ -18,7 +18,8 @@ S3->CloudFront: ファイル渡す
 CloudFront->Client: .html/.js/.css/画像ファイルを返却
 
 legend center
-  Given: アカウントは作成済み
-  When: 初回利用時
+  Given: JSONは作成済み(RDSに保存)
+  When: ビルドの定期ジョブ実行時
+  When: ユーザが閲覧目的でアクセスした時
 endlegend
 @enduml
