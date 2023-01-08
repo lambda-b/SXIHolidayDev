@@ -5,7 +5,18 @@ import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const API_URL = 'http://localhost:8000/top'
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(API_URL)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
+export default function Home({ data } : any) {
   return (
     <>
       <Head>
@@ -16,6 +27,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
+          <p>{data}</p>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>

@@ -1,4 +1,4 @@
 #!/bin/bash
 cd `dirname $0`
 cd ../mock-api
-uvicorn main:app --reload 
+pip3 install -r requirements.txt
