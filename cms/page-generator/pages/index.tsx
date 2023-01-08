@@ -2,11 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import * as React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const API_URL = 'http://host.docker.internal:8000/top'
 
+// TODO: SSG対応させる
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(API_URL)
@@ -17,6 +19,10 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data } : any) {
+  const jsonStr: string = data
+  const json = JSON.parse(jsonStr)
+  const componentId = json.components[0].componentId
+  const Component = React.lazy(() => import(`../components/modularized/${componentId}`))
   return (
     <>
       <Head>
@@ -27,7 +33,7 @@ export default function Home({ data } : any) {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <p>{data}</p>
+          <Component />
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
