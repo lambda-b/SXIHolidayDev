@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const API_URL = 'http://localhost:8000/top'
+const API_URL = 'http://host.docker.internal:8000/top'
 
 export async function getServerSideProps() {
   // Fetch data from external API
