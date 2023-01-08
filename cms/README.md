@@ -1,0 +1,1 @@
+SXIHolidayDevの活動の中の一つのCMS作成のディレクトリ
