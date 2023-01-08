@@ -1,0 +1,33 @@
+@startuml
+actor Client #black
+participant CF as "CloudFront+S3 For LP"
+participant N1 as "React.ts(CloudFront+S3) \n (NO SSG!!)"
+participant API as "Spring"
+participant Cognito
+participant RDS
+
+Client->CF: https://{サービス名}.com
+CF->Client: 静的にページを表示
+Client->N1: ログインボタン押下 \n https://edit.{サービス名}.com/login
+N1->Client: 有効なtokenが無ければログイン用画面を返却
+Client->API: Req Auth
+API->Cognito: Req Auth
+Cognito->API: Return Token
+API->Client: Return redirect url + token
+Client->Client: 変更対象選択画面を返却\nhttps://edit.{サービス名}.com/workspace
+Client->API: APIで編集データ取得
+API->API: tokenからUserIDをデコード+有効期限の確認
+API->RDS: サイト構造データを全て取得
+RDS->API: データ返却
+API->Client: データ返却
+Client->Client: Storeにデータ(JSON)格納
+Client->Client: 編集
+Client->API: 更新処理
+API->API: tokenからUserIDをデコード+有効期限の確認
+API->RDS: 更新処理
+
+legend center
+  Given: アカウントは作成済み
+  When: 初回利用時
+endlegend
+@enduml

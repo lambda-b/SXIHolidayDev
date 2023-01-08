@@ -1,0 +1,23 @@
+@startuml
+actor Client #black
+participant Batch as "BatchProcess"
+participant N as "Next.ts"
+participant API as "Spring"
+participant S3
+participant CloudFront
+
+Batch->N: ビルド要求
+N->API: ビルド時にjson取得要求(APIKeyによってアクセス制御, 認証機能なし, ユーザごとではなく、一括で更新をかける)
+API->RDS: json取得
+RDS->API: jsonを返却
+S3: ビルドして生成したファイルをアップロード
+Client->CloufFront: https://{ユーザが取得したドメイン}
+CloudFront->S3: キャッシュが無ければ取得
+S3->CloudFront: ファイル渡す
+CloudFront->Client: .html/.js/.css/画像ファイルを返却
+
+legend center
+  Given: アカウントは作成済み
+  When: 初回利用時
+endlegend
+@enduml
