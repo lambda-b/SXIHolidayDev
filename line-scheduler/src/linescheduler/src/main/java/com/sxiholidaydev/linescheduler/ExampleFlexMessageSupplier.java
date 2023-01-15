@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package com.example.bot.spring;
+package com.sxiholidaydev.linescheduler;
 
 import static java.util.Arrays.asList;
 
