@@ -1,0 +1,13 @@
+package com.sxiholidaydev.linescheduler;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class LineschedulerApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
