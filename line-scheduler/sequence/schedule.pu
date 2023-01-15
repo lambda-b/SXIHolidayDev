@@ -1,0 +1,27 @@
+@startuml スケジュール管理
+actor User
+actor Friend as "友だち" #Black
+participant Client as "LINE Client"
+participant API as "Spring"
+participant LINE as "LINE API"
+participant DB as "PostgresQL"
+
+User->Client: ボットとの対話画面を開く
+Client->User: リッチメニュー表示
+User->Client: 「予定登録」メニューボタンを押下
+Client->User: 入力フォームを表示
+User->Client: 予定内容, 場所リンク, 予定日時, 共有相手を入力
+Client->API: リクエスト送信(ユーザIDを載せる)
+API->DB: 通知予定作成
+API->LINE: 自分自信に向けて予定が登録された旨を通知するようリクエスト
+API->LINE: 友達に向けて通知するようリクエスト
+LINE->Friend: 予定が登録された旨を通知
+LINE->User: 予定が登録された旨を通知
+
+legend center
+  Scenario: スケジュールを追加したい
+  Given: ボットを友達追加済み
+  Given: 友だちもボットを友達追加済み
+  Given: 友だちと連携ずみ(友だち一覧から閲覧でき、ユーザIDを扱える)
+endlegend
+@enduml

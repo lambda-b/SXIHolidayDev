@@ -1,0 +1,21 @@
+@startuml スケジュール管理
+actor User
+actor Friend as "友だち" #Black
+participant Client as "LINE Client"
+participant API as "Spring"
+participant LINE as "LINE API"
+participant DB as "PostgresQL"
+participant Timer as "Timerスレッド"
+
+Timer->API: リマインド(\n・Push通知すべき情報\n・送信完了ステータス\n)命令
+API->DB: 翌日の予定を取得
+DB->API: 翌日の予定一覧を返却
+API->LINE: 通知依頼
+LINE->User: 翌日の予定通知
+LINE->Friend: 翌日の予定通知
+
+legend center
+  Scenario: 予定の前になったらリマインド
+  Given: 予定登録済み
+endlegend
+@enduml
